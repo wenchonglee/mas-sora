@@ -19,5 +19,9 @@ export const GET: RequestHandler = async () => {
 			index
 		}));
 
-	return new Response(JSON.stringify({ records: filteredData }));
+	return new Response(JSON.stringify({ records: filteredData }), {
+		headers: {
+			'cache-control': 'max-age=0, s-maxage=86400'
+		}
+	});
 };
